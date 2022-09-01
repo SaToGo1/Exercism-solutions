@@ -72,23 +72,13 @@ export function addSecretIngredient(ingredients, ingredients2) {
 *@param: numberOfPortions(number)
 **/
 export function scaleRecipe(recipe, numberOfPortions){
-  const multipleRecipe = {
-  noodles: 0,
-  sauce: 0,
-  mozzarella: 0,
-  meat: 0,
+  const multipleRecipe = Object.create(recipe);
+
+  for(let ingredient in recipe) {
+    multipleRecipe[ingredient] = (recipe[ingredient] / 2) * numberOfPortions;
   }
-
-  let noodlesForOne = recipe.noodles / 2;
-  let sauceForOne = recipe.sauce / 2;
-  let mozzarellaForOne = recipe.mozzarella / 2;
-  let meatForOne = recipe.meat / 2;
-
-  multipleRecipe.noodles = noodlesForOne * numberofPortions;
-  multipleRecipe.sauce = sauceForOne * numberofPortions;
-  multipleRecipe.mozzarella = mozzarellaForOne * numberofPortions;
-  multipleRecipe.meat = meatForOne * numberofPortions;
-
+  
+  console.log(multipleRecipe)
   return multipleRecipe;
 }
 
