@@ -35,4 +35,25 @@ export class ProgramWindow{
     this.size = new Size();
     this.position = new Position();
   }
+
+  //TASK 4
+  resize(size){
+    //
+    if(size.width < 1){
+      size.width = 1
+    } else if((this.position.x + size.width) > this.screenSize.width){
+      size.width = size.width - ((this.position.x + size.width) - this.screenSize.width);
+    }
+
+    if(size.height < 1){
+      size.height = 1
+    } else if((this.position.y + size.height) > this.screenSize.height){
+      size.height = size.height - ((this.position.y + size.height) - this.screenSize.height);
+    }
+
+    this.size.width = size.width;
+    this.size.height = size.height;
+  }
 }
+
+
