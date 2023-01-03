@@ -54,6 +54,24 @@ export class ProgramWindow{
     this.size.width = size.width;
     this.size.height = size.height;
   }
+
+  //TASK 5
+    move(position){
+    if(position.x < 0){
+      position.x = 0
+    } else if((position.x + this.size.width) > this.screenSize.width){
+      position.x = position.x - ((position.x + this.size.width) - this.screenSize.width);
+    }
+
+    if(position.y < 0){
+      position.y = 0
+    } else if((position.y + this.size.height) > this.screenSize.height){
+      position.y = position.y - ((position.y + this.size.height) - this.screenSize.height);
+    }
+
+    this.position.x = position.x;
+    this.position.y = position.y;
+  }
 }
 
 
