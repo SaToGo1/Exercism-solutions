@@ -74,4 +74,13 @@ export class ProgramWindow{
   }
 }
 
+//TASK 6
+export function changeWindow(programWindow){
+  const size = new Size(400, 300)
+  programWindow.resize(size);
 
+  const position = new Position(100, 150);
+  programWindow.move(position);
+
+  return programWindow;
+}
