@@ -19,14 +19,18 @@ export function seeingDouble(deck) {
  * @returns {number[]} deck with triplicate 3s
  */
 export function threeOfEachThree(deck) {
-  for(let i = 0; i < deck.length; i++){
-    if(deck[i] === 3){
-      deck.splice(i,0,3,3);
-      i+= 2;
-    }
-  }
+  return deck.reduce(
+    (accumulator, currentValue) => {
+      if(currentValue === 3){
+        accumulator.tripleArray.push(3, 3, 3);
+      } else{
+        accumulator.tripleArray.push(currentValue);
+      }
 
-  return deck;
+      return accumulator;
+    },
+    {tripleArray: []}
+  ).tripleArray;
 }
 
 /**
