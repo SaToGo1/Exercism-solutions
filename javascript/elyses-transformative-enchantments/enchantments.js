@@ -19,7 +19,14 @@ export function seeingDouble(deck) {
  * @returns {number[]} deck with triplicate 3s
  */
 export function threeOfEachThree(deck) {
-  throw new Error('Implement the threeOfEachThree function');
+  for(let i = 0; i < deck.length; i++){
+    if(deck[i] === 3){
+      deck.splice(i,0,3,3);
+      i+= 2;
+    }
+  }
+
+  return deck;
 }
 
 /**
