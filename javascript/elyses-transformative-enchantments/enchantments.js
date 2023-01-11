@@ -55,7 +55,13 @@ export function middleTwo(deck) {
  */
 
 export function sandwichTrick(deck) {
-  throw new Error('Implement the sandwichTrick function');
+ 
+  let lastAndFirst = [...deck.slice(-1), ...deck.slice(0, 1)];
+  let rest = [...deck.slice(1, -1)]
+
+  const HALF_DECK = rest.length/2;
+  rest.splice(HALF_DECK, 0 , ...lastAndFirst);
+  return rest;
 }
 
 /**
