@@ -55,12 +55,12 @@ export function middleTwo(deck) {
  */
 
 export function sandwichTrick(deck) {
- 
   let lastAndFirst = [...deck.slice(-1), ...deck.slice(0, 1)];
   let rest = [...deck.slice(1, -1)]
 
   const HALF_DECK = rest.length/2;
   rest.splice(HALF_DECK, 0 , ...lastAndFirst);
+  
   return rest;
 }
 
@@ -72,7 +72,9 @@ export function sandwichTrick(deck) {
  * @returns {number[]} deck with only 2s
  */
 export function twoIsSpecial(deck) {
-  throw new Error('Implement the twoIsSpecial function');
+  return deck.filter((el) => {
+    return el == 2;
+  })
 }
 
 /**
