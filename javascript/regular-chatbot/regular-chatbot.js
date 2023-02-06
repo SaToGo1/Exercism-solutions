@@ -32,7 +32,9 @@ export function removeEmoji(message) {
  * @returns {string} the Chatbot response to the phone Validation
  */
 export function checkPhoneNumber(number) {
-  throw new Error('Please implement the checkPhoneNumber function');
+  const regexp = /\(\+[0-9]{2}\) [0-9]{3}-[0-9]{3}-[0-9]{3}/
+  if(number.match(regexp)) return "Thanks! You can now download me to your phone.";
+  return `Oops, it seems like I can't reach out to ${number}`;
 }
 
 /**
@@ -42,7 +44,7 @@ export function checkPhoneNumber(number) {
  * @returns {string[] | null} all the possible URL's that the user may have answered
  */
 export function getURL(userInput) {
-  throw new Error('Please implement the userInput function');
+  throw new Error('Please implement the getURL function');
 }
 
 /**
