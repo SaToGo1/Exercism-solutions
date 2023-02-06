@@ -8,7 +8,10 @@
  */
 
 export function isValidCommand(command) {
-  throw new Error('Please implement the isValidCommand function');
+  const chatbot = /chatbot/i;
+  let result = command.match(chatbot);
+  console.log(result);
+  return ( (chatbot.test(result[0]) ) && (result.index == 0));
 }
 
 /**
