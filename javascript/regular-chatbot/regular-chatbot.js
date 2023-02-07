@@ -44,7 +44,17 @@ export function checkPhoneNumber(number) {
  * @returns {string[] | null} all the possible URL's that the user may have answered
  */
 export function getURL(userInput) {
-  throw new Error('Please implement the getURL function');
+  const link = /[a-zA-Z]+\.[a-zA-z]+/g
+  let URLlist = []
+  let result = userInput.match(link);
+  
+  for(let i = 0; i < result.length; i++){
+    if(typeof(result[i]) === 'string'){
+      URLlist.push(result[i])
+    }
+  }
+
+  return URLlist;
 }
 
 /**
