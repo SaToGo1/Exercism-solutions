@@ -64,5 +64,10 @@ export function getURL(userInput) {
  * @returns {string} Greeting from the chatbot
  */
 export function niceToMeetYou(fullName) {
-  throw new Error('Please implement the fullName function');
+  let greet = `Nice to meet you, ${fullName}`;
+  let regexp = /[A-Z]{1}[a-z]*, [A-Z][a-z]*/
+  let name = greet.match(regexp)[0];
+  let regexp2 = /[A-Z][a-z]*/g
+  name = name.match(regexp2)
+  return greet.replace(regexp, `${name[1]} ${name[0]}`);
 }
