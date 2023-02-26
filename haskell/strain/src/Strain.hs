@@ -1,7 +1,10 @@
 module Strain (keep, discard) where
 
 discard :: (a -> Bool) -> [a] -> [a]
-discard p xs = error "You need to implement this function."
+discard p xs = keep (not . p) xs
 
 keep :: (a -> Bool) -> [a] -> [a]
-keep p xs = error "You need to implement this function."
+keep _ [] = []
+keep p (hd : tl)
+	| p hd = hd : keep p tl 
+	| otherwise = keep p tl
