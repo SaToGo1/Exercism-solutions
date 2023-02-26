@@ -6,14 +6,10 @@ collatz n
   | n > 0 = Just (collatzRecursive n)
   | otherwise = Nothing
 
-collatzRecursive x =
-  if x == 1 then
-      0
-    else 
-      if isEven x then 
-          collatzRecursive (evenOperation x) + 1
-        else 
-          collatzRecursive (oddOperation x) + 1
+collatzRecursive x
+  | x == 1 = 0 
+  | isEven x = collatzRecursive (evenOperation x) + 1
+  | isOdd x = collatzRecursive (oddOperation x) + 1
 
 isEven x = (mod x 2) == 0
 isOdd x = (mod x 2) /= 0
