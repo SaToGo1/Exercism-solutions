@@ -42,7 +42,11 @@ export function hasTrack(playlist, track) {
  * @returns {string[]} new playlist
  */
 export function addTrack(playlist, track) {
-  throw new Error('Please implement the addTrack function');
+  if(hasTrack(playlist, track)) return playlist;
+
+  let result = playlist;
+  result.push(track);
+  return result;
 }
 
 /**
