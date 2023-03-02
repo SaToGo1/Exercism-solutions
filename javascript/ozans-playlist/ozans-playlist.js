@@ -57,7 +57,12 @@ export function addTrack(playlist, track) {
  * @returns {string[]} new playlist
  */
 export function deleteTrack(playlist, track) {
-  throw new Error('Please implement the deleteTrack function');
+  let result = [];
+  const set = new Set();
+  playlist.forEach((el) => set.add(el));
+  set.delete(track)
+  set.forEach((el) => result.push(el));
+  return result;
 }
 
 /**
