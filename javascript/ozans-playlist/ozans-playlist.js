@@ -29,7 +29,9 @@ export function removeDuplicates(playlist) {
  * @returns {boolean} whether the track is in the playlist
  */
 export function hasTrack(playlist, track) {
-  throw new Error('Please implement the hasTrack function');
+  const set = new Set();
+  playlist.forEach((el) => set.add(el));
+  return set.has(track)
 }
 
 /**
