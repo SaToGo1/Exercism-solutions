@@ -50,13 +50,6 @@ export function deleteTrack(playlist, track) {
   const set = new Set(playlist);
   set.delete(track);
   return [...set];
-  
-  // let result = [];
-  // const set = new Set();
-  // playlist.forEach((el) => set.add(el));
-  // set.delete(track)
-  // set.forEach((el) => result.push(el));
-  // return result;
 }
 
 /**
@@ -66,5 +59,11 @@ export function deleteTrack(playlist, track) {
  * @returns {string[]} list of artists
  */
 export function listArtists(playlist) {
-  throw new Error('Please implement the listArtists function');
+  const set = new Set();
+  
+  playlist.forEach((el) => {
+    let [track, artist] = el.split("- ")
+    set.add(artist)
+  })
+  return [...set]
 }
