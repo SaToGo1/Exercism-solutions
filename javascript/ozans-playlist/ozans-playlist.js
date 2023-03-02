@@ -12,13 +12,8 @@
  */
 export function removeDuplicates(playlist) {
   const set = new Set();
-  let result = []
   playlist.forEach((el) => set.add(el))
-  // for(const el of set){
-  //   result.push(el)
-  // }
-  result = [...set]
-  return result
+  return [...set]
   
 }
 
