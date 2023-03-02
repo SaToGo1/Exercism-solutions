@@ -37,11 +37,6 @@ export function hasTrack(playlist, track) {
 export function addTrack(playlist, track) {
   const set = new Set(playlist);
   return [...set.add(track)]
-  // if(hasTrack(playlist, track)) return playlist;
-
-  // let result = playlist;
-  // result.push(track);
-  // return result;
 }
 
 /**
@@ -52,12 +47,16 @@ export function addTrack(playlist, track) {
  * @returns {string[]} new playlist
  */
 export function deleteTrack(playlist, track) {
-  let result = [];
-  const set = new Set();
-  playlist.forEach((el) => set.add(el));
-  set.delete(track)
-  set.forEach((el) => result.push(el));
-  return result;
+  const set = new Set(playlist);
+  set.delete(track);
+  return [...set];
+  
+  // let result = [];
+  // const set = new Set();
+  // playlist.forEach((el) => set.add(el));
+  // set.delete(track)
+  // set.forEach((el) => result.push(el));
+  // return result;
 }
 
 /**
