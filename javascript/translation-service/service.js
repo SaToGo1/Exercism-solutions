@@ -42,7 +42,22 @@ export class TranslationService {
    * @returns {Promise<string[]>}
    */
   batch(texts) {
-    throw new Error('Implement the batch function');
+    let promisesArray = []
+
+    for(const text of texts){
+      let p = this.api.fetch(text);
+      promisesArray.push(p)
+    }
+
+    for(let i = 0; i < promisesArray.length; i++){
+      console.log('hi')
+       promisesArray[i]
+         .then((data) => data.translation)
+    }
+    console.log(promisesArray)
+    console.log(promisesArray[0])
+    console.log(Promise.resolve(promisesArray))
+    return Promise.resolve(promisesArray);
   }
 
   /**
