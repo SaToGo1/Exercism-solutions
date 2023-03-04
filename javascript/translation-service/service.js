@@ -42,22 +42,18 @@ export class TranslationService {
    * @returns {Promise<string[]>}
    */
   batch(texts) {
-    let promisesArray = []
-
-    for(const text of texts){
-      let p = this.api.fetch(text);
-      promisesArray.push(p)
-    }
-
-    for(let i = 0; i < promisesArray.length; i++){
-      console.log('hi')
-       promisesArray[i]
-         .then((data) => data.translation)
-    }
-    console.log(promisesArray)
-    console.log(promisesArray[0])
-    console.log(Promise.resolve(promisesArray))
-    return Promise.resolve(promisesArray);
+    return new Promise((resolve, reject) => {
+      let data = []
+        for(const text of texts){
+          let p = this.api.fetch(text)
+            .then((data) => data.translation)
+          data.push(p)
+        }
+      if(texts.length > 0)
+        resolve(Promise.all(data));
+      else
+        reject(new BatchIsEmpty);
+    });
   }
 
   /**
