@@ -66,9 +66,31 @@ export class TranslationService {
    * @returns {Promise<void>}
    */
   request(text) {
-    throw new Error('Implement the request function');
-  }
+    let requestCalls = 0;
 
+    let cb = (err) =>{
+      return new Promise((resolve, reject) => {
+        if(requestCalls >= 3){
+          console.log('reject')
+          reject(err)
+        }
+        
+        requestCalls++;
+        if(err) reject(this.api.request(text, cb))
+        if(err === undefined){
+          console.log('resolve undefined')
+          resolve(err)
+        }
+      })
+    }
+
+    return new Promise((resolve, reject) => {
+      requestCalls++
+      resolve(this.api.request(text, cb))
+    })
+    
+  }
+ 
   /**
    * Retrieves the translation for the given text
    *
