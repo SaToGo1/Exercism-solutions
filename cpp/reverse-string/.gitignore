@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!reverse_string.cpp
+!reverse_string.h
+!reverse_string_test.cpp
