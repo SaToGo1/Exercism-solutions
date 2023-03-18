@@ -3,4 +3,4 @@
 
 # Do not ignore these files:
 !.gitignore
-!HelloWorld.hs
+!./src/HelloWorld.hs
