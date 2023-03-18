@@ -10,9 +10,7 @@ namespace reverse_string {
         size_t right = input.length() - 1; //unsigned value, can't have negative number
 
         while(left < right){
-            char tmp = input[left];
-            input[left] = input[right];
-            input[right] = tmp;
+            std::swap(input[left], input[right]);
             left++;
             right--;
         }
