@@ -3,4 +3,5 @@
 
 # Do not ignore these files:
 !.gitignore
-!src/
+!/src/
+!/src/*
