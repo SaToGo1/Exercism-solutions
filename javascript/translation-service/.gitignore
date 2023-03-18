@@ -1,3 +1,14 @@
 node_modules
 yarn-error.log
 
+# Ignore everything:
+*
+
+# Do not ignore these files:
+!.gitignore
+!api.js
+!errors.js
+!service.js
+!global.d.ts
+!LICENSE
+!README.md

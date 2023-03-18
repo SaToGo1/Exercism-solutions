@@ -6,6 +6,6 @@ yarn-error.log
 
 # Do not ignore these files:
 !.gitignore
-!annalyns-infiltration.js
+!hello_world.js
 !LICENSE
 !README.md

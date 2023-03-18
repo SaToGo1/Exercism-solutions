@@ -1,3 +1,11 @@
 node_modules
 yarn-error.log
 
+# Ignore everything:
+*
+
+# Do not ignore these files:
+!.gitignore
+!high-score-board.js
+!LICENSE
+!README.md

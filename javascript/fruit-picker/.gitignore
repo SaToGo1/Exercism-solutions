@@ -1,3 +1,11 @@
 node_modules
 yarn-error.log
 
+# Ignore everything:
+*
+
+# Do not ignore these files:
+!.gitignore
+!fruit-picker.js
+!LICENSE
+!README.md

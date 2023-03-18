@@ -1,3 +1,11 @@
 node_modules
 yarn-error.log
 
+# Ignore everything:
+*
+
+# Do not ignore these files:
+!.gitignore
+!ozans-playlist.js
+!LICENSE
+!README.md
