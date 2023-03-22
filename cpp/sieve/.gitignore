@@ -1,0 +1,8 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!sieve.cpp
+!sieve.h
+!README.md
