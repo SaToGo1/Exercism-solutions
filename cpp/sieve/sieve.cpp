@@ -1,25 +1,35 @@
 #include "sieve.h"
-#include <iostream>
 
 namespace sieve {
 std::vector<int> primes(int limit){
-    std::vector<int> v = {};
-    for(int i = 2; i < limit; i++){
-        v.push_back(i);
-    }
+    std::vector<int> vectorOfNumbers = {};
+    std::set<int> notPrimes = {};
 
-    std::vector<int>::iterator primeNumber;
-    for (primeNumber = v.begin(); primeNumber < v.end(); primeNumber++){
-        std::vector<int>::iterator multiples;
-        for(multiples = primeNumber; multiples < v.end(); multiples += *primeNumber){
-            if(*multiples != *primeNumber){
-                multiples = v.erase(multiples);
+    for(int number = 2; number <= limit; number++){
+        vectorOfNumbers.push_back(number);
+    }
+    
+    std::vector<int>::iterator itNumbers;
+    std::vector<int>::iterator itMultiples;
+    for (itNumbers = vectorOfNumbers.begin(); itNumbers < vectorOfNumbers.end(); itNumbers++){
+        for(itMultiples = itNumbers; itMultiples < vectorOfNumbers.end(); itMultiples += *itNumbers){
+            if(*itMultiples != *itNumbers){
+                notPrimes.insert(*itMultiples);
+                std::cout << *itMultiples << " ";
             }
         }
-        std::cout << *primeNumber << " ";
+    }
+
+    std::set<int>::iterator itNotPrimes;
+    for (itNumbers = vectorOfNumbers.begin(); itNumbers < vectorOfNumbers.end(); itNumbers++){
+        for(itNotPrimes = notPrimes.begin(); itNotPrimes != notPrimes.end(); itNotPrimes++){
+            if(*itNotPrimes == *itNumbers){
+                itNumbers = vectorOfNumbers.erase(itNumbers);
+            }
+        }
     }
         
-    return v;
+    return vectorOfNumbers;
 }
 }  // namespace sieve
 
