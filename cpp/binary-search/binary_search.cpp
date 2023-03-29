@@ -7,7 +7,15 @@ namespace binary_search {
         std::vector<int>::iterator itMid;
         std::vector<int>::iterator itEnd = data.end();
         int num = 0;
-        for(itMid = data.begin() + data.size() / 2; itStart <= itEnd; itMid = data.begin() + data.size() / 2){
+        for(itMid = data.begin() + data.size() / 2; itStart < itEnd; itMid = data.begin() + data.size() / 2){
+            if(data.size() == 1){
+                if(data[0] == number){
+                    return num;
+                }else{
+                    throw std::domain_error("number not in the list");
+                }
+            }
+
             if(*itMid == number) {
                 num += itMid - data.begin();
                 return num;
