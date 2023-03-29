@@ -2,6 +2,11 @@
 
 namespace binary_search {
     int find(std::vector<int> vec, int number){
+
+        if(vec.size() == 0){
+            throw std::domain_error("you passed an empty list");
+        }
+
         std::vector<int> data = vec;
         std::vector<int>::iterator itStart = data.begin();
         std::vector<int>::iterator itMid;
