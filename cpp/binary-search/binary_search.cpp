@@ -1,37 +1,30 @@
 #include "binary_search.h"
 
 namespace binary_search {
-    int find(std::vector<int> data, int number){
-
-        //std::vector<int> data = vec;
+    int find(std::vector<int> vec, int number){
+        std::vector<int> data = vec;
         std::vector<int>::iterator itStart = data.begin();
         std::vector<int>::iterator itMid;
         std::vector<int>::iterator itEnd = data.end();
-        for(itMid = NewMiddle(itEnd, itStart, data); itStart < itEnd; itMid = NewMiddle(itEnd, itStart, data) ){
+        int num = 0;
+        for(itMid = data.begin() + data.size() / 2; itStart <= itEnd; itMid = data.begin() + data.size() / 2){
             if(*itMid == number) {
-                int num = itMid - data.begin();
+                num += itMid - data.begin();
                 return num;
-                
             } else if(*itMid > number){
-                itEnd = itMid;
-                    
+                data.erase(itMid, itEnd);
+
             }else{
-                itStart = itMid;
+                num += data.size() / 2;
+                data.erase(itStart, itMid);
+
             }
+            
+            itEnd = data.end();
+            itStart = data.begin();
         }
         
         return 0;
     }
 
-std::vector<int>::iterator NewMiddle(std::vector<int>::iterator itEnd, std::vector<int>::iterator itStart, std::vector<int> data){
-    int Start = itStart - data.begin();
-    int End = itEnd - data.begin();
-    int index = End - Start / 2;
-
-    std::vector<int>::iterator mid = data.begin() + index;
-    return mid;
 }
-
-}  // namespace binary_search
-
-// it - vec.begin()

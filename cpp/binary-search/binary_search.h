@@ -2,10 +2,10 @@
 #define BINARY_SEARCH_H
 
 #include <vector>
+#include <iostream>
 
 namespace binary_search {
-    int find(std::vector<int> data, int number);
-    std::vector<int>::iterator NewMiddle(std::vector<int>::iterator itEnd, std::vector<int>::iterator itStart, std::vector<int> data);
+    int find(std::vector<int> vec, int number);
 }  // namespace binary_search
 
 #endif // BINARY_SEARCH_H
