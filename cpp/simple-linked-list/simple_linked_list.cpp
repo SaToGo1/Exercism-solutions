@@ -42,7 +42,10 @@ int List::pop() {
     }
     
     current_size--;
-    return p->data;
+
+    int value = p->data;
+    delete p;
+    return value;
 }
 
 void List::reverse() {
@@ -79,8 +82,12 @@ void List::reverse() {
 
 List::~List() {
     // TODO: Ensure that all resources are freed on destruction
+    Element* p;
+    while(head != nullptr){
+        p = head;
+        head = head->next;
+        delete p;
+    }
 }
 
 }  // namespace simple_linked_list
-
-//
