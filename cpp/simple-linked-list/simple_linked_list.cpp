@@ -10,25 +10,24 @@ size_t List::size() {
 
 void List::push(int entry) {
     Element node(entry);
-    node.next = head;
-    head = &node;
-    current_size++;
-
-    std::cout << "node.next " << node.next;
-    std::cout << head->data;
-    Element* p = head;
-    std::cout << head->data << "\n";
-    std::cout << p->data << " -> ";
-    while(p->next != nullptr){
-        p = p->next;
-        std::cout << p->data << " -> ";
+    if(head == nullptr){
+        head = &node;
+        tail = &node;
+    }else{
+        tail->next = &node;
+        tail = &node;
     }
+    node.next = nullptr;
+    current_size++;
 }
 
 int List::pop() {
     Element* p = head;
     head = head->next;
     current_size--;
+
+    std::cout << "\n\n";
+    std::cout << "p->data " << p->data;
     return p->data;
 }
 

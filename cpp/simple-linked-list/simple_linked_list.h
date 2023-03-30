@@ -33,6 +33,7 @@ class List {
 
    private:
     Element* head{nullptr};
+    Element* tail{nullptr};
     size_t current_size{0};
 };
 
