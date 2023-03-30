@@ -9,31 +9,72 @@ size_t List::size() {
 }
 
 void List::push(int entry) {
-    Element node(entry);
+    Element* node = new Element (entry);
+    std::cout << node;
     if(head == nullptr){
-        head = &node;
-        tail = &node;
+        head = node;
+        tail = node;
     }else{
-        tail->next = &node;
-        tail = &node;
+        tail->next = node;
+        tail = node;
     }
-    node.next = nullptr;
+    node->next = nullptr;
     current_size++;
 }
 
 int List::pop() {
+    if(head == nullptr){
+        return -1;
+    }
+    
     Element* p = head;
-    head = head->next;
-    current_size--;
+    if(p != tail){
+        
+        while(p->next != tail){
+            p = p->next;
+        }
 
-    std::cout << "\n\n";
-    std::cout << "p->data " << p->data;
+        tail = p;
+        p = p->next;
+        tail->next = nullptr;
+    }else{
+        head = nullptr;
+    }
+    
+    current_size--;
     return p->data;
 }
 
 void List::reverse() {
-    // TODO: Implement a function to reverse the order of the elements in the
-    // list.
+    //Null list
+    if(head == nullptr){
+        return ;
+    }
+    //1 element list 
+    if(head == tail){
+        return ;
+    }
+
+    Element* pFirst = head;
+    Element* pSecond = head->next;
+    Element* pThird = head->next->next;
+      
+    pFirst->next = nullptr;
+    tail = pFirst;
+
+    while(pThird != nullptr){
+        pSecond->next = pFirst;
+        pFirst = pSecond;
+        pSecond = pThird;
+        pThird = pThird->next;
+    }
+
+    //end of the list or 2 elements list.
+    if(pThird == nullptr){
+        pSecond->next = pFirst;
+        head = pSecond; 
+    }
+
 }
 
 List::~List() {
