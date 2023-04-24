@@ -1,0 +1,7 @@
+# Ignore everything:
+*
+
+# Do not ignore these files:
+!.gitignore
+!conditionals.py
+!README.md
