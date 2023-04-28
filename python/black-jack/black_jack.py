@@ -15,8 +15,12 @@ def value_of_card(card):
     2.  'A' (ace card) = 1
     3.  '2' - '10' = numerical value.
     """
-
-    pass
+    if(card == 'J' or card == 'Q' or card == 'K'):
+        return 10
+    elif(card == 'A'):
+        return 1
+    
+    return int(card)
 
 
 def higher_card(card_one, card_two):
@@ -29,8 +33,15 @@ def higher_card(card_one, card_two):
     2.  'A' (ace card) = 1
     3.  '2' - '10' = numerical value.
     """
+    card1_value = value_of_card(card_one)
+    card2_value = value_of_card(card_two)
 
-    pass
+    if(card1_value > card2_value):
+        return card_one 
+    elif(card2_value > card1_value):
+        return card_two
+
+    return card_one, card_two
 
 
 def value_of_ace(card_one, card_two):
@@ -43,8 +54,16 @@ def value_of_ace(card_one, card_two):
     2.  'A' (ace card) = 11 (if already in hand)
     3.  '2' - '10' = numerical value.
     """
+    card1_value = value_of_card(card_one)
+    card2_value = value_of_card(card_two)
+    if(card1_value == 1 or card2_value == 1):
+        return 1
 
-    pass
+    total_hand = card1_value + card2_value + 11
+    if(total_hand > 21):
+        return 1
+
+    return 11
 
 
 def is_blackjack(card_one, card_two):
