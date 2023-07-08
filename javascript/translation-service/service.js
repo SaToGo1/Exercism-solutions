@@ -44,11 +44,11 @@ export class TranslationService {
   batch(texts) {
     return new Promise((resolve, reject) => {
       let data = []
-        for(const text of texts){
-          let p = this.api.fetch(text)
-            .then((data) => data.translation)
-          data.push(p)
-        }
+      for(const text of texts){
+        let p = this.api.fetch(text)
+          .then((data) => data.translation)
+        data.push(p)
+      }
       if(texts.length > 0)
         resolve(Promise.all(data));
       else
@@ -66,29 +66,28 @@ export class TranslationService {
    * @returns {Promise<void>}
    */
   request(text) {
-    let requestCalls = 0;
-
-    let cb = (err) =>{
-      return new Promise((resolve, reject) => {
-        if(requestCalls >= 3){
-          console.log('reject')
-          reject(err)
-        }
-        
-        requestCalls++;
-        if(err) reject(this.api.request(text, cb))
-        if(err === undefined){
-          console.log('resolve undefined')
-          resolve(err)
-        }
-      })
+    const cb = (err) => {
+      console.log('hello error', err)
+      if(err) throw new Error(err);
+      return undefined;
     }
-
-    return new Promise((resolve, reject) => {
-      requestCalls++
-      resolve(this.api.request(text, cb))
-    })
     
+    return new Promise((resolve, reject) => {
+      let requestCalls = 0;
+      let data = null;
+      let error = null;
+      
+      while (requestCalls < 3){
+        try {
+          let data = this.api.request(text, cb)
+          resolve(data)
+        }catch (err){
+          requestCalls++;
+          error = err;
+        }
+      }
+      reject(error)
+    })
   }
  
   /**
